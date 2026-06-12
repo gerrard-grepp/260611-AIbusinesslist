@@ -219,6 +219,7 @@ body {
 .badge-univ { background: var(--surface2); color: var(--text-secondary); border: 1px solid var(--border-strong); }
 .badge-junior { background: #FFF7ED; color: #C2410C; border: 1px solid #FED7AA; }
 .badge-moel  { background: #FFF1F2; color: #BE123C; border: 1px solid #FECDD3; }
+.badge-region { background: #F5F3FF; color: #6D28D9; border: 1px solid #DDD6FE; }
 
 .card-arrow {
   color: var(--accent);
@@ -437,12 +438,12 @@ body {
     <div class="hero-eyebrow">2026 정부 재정지원사업 종합</div>
     <h1>대학 <span>AI · SW 교육</span> 지원사업<br>현황 가이드</h1>
     <p class="hero-desc">
-      과기정통부·교육부가 운영하는 대학 대상 AI·SW 인재양성 사업을 한 곳에 정리했습니다.
+      과기정통부·교육부·고용노동부가 운영하는 대학 대상 AI·SW·지역혁신 인재양성 사업을 한 곳에 정리했습니다.
       각 사업을 클릭하면 공식 사이트·공고로 바로 이동합니다.
     </p>
     <div class="hero-stats">
       <div>
-        <div class="hero-stat-num">19</div>
+        <div class="hero-stat-num">23</div>
         <div class="hero-stat-label">조사된 사업 수</div>
       </div>
       <div>
@@ -450,8 +451,8 @@ body {
         <div class="hero-stat-label">2026년 신규 사업</div>
       </div>
       <div>
-        <div class="hero-stat-num">연 30억</div>
-        <div class="hero-stat-label">최대 지원 규모 (교당)</div>
+        <div class="hero-stat-num">연 2.4조</div>
+        <div class="hero-stat-label">RISE 국고+지방비 합산</div>
       </div>
       <div>
         <div class="hero-stat-num">3개 부처</div>
@@ -472,6 +473,7 @@ body {
   <button class="filter-btn" onclick="setFilter(this,'univ')">일반대학</button>
   <button class="filter-btn" onclick="setFilter(this,'junior')">전문대학</button>
   <button class="filter-btn" onclick="setFilter(this,'grad')">대학원</button>
+  <button class="filter-btn" onclick="setFilter(this,'region')">지역연계</button>
 </div>
 
 <!-- MAIN -->
@@ -485,6 +487,7 @@ body {
       <div class="legend-item"><div class="legend-dot" style="background:#2B7FFF"></div>과기정통부 (IITP)</div>
       <div class="legend-item"><div class="legend-dot" style="background:#00C48C"></div>교육부</div>
       <div class="legend-item"><div class="legend-dot" style="background:#BE123C"></div>고용노동부</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7C3AED"></div>교육부 (지역연계)</div>
     </div>
   </div>
 
@@ -815,16 +818,84 @@ const PROGRAMS = [
       { label: '고용노동부 직업훈련', url: 'https://www.moel.go.kr', primary: false },
     ]
   },
+  // ───────────────────────────────────────────────
+  // 지역혁신·지역연계 계열 사업
+  // ───────────────────────────────────────────────
+  {
+    id: 20,
+    title: 'RISE (지역혁신중심 대학지원체계)',
+    sub: '지자체가 주도하는 지역대학 전면 지원 — AI 특화 단위과제 포함',
+    dept: 'moe',
+    isNew: false,
+    target: 'univ',
+    scale: '연간 국고+지방비 총 2조4천억 (전국 17개 시도)',
+    barVal: 39,
+    detail: '2025년 전국 본격 시행(2025~2029년 5개년). 기존 RIS·LINC 등 대학지원 사업을 통합·흡수. 지자체 주도로 지역대학에 AI 관련 학과 지원·계약학과·산학협력 등 단위과제 자율 설계. 서울시: AI 관련 학과 지원·AI분야 조기취업형 계약학과 공고(2026년 4월 공고, 7월 선정). 경북: 5년간 1조5천억 이상 투입(전국 최대). 한양대 5년간 395억, 서울과기대 5개 과제 선정 등 개별 대학 규모 상이.',
+    badges: ['moe','region','univ'],
+    links: [
+      { label: '한국연구재단 RISE', url: 'https://www.nrf.re.kr/biz/info/info/view?menu_no=378&biz_no=627', primary: true },
+      { label: '서울RISE센터', url: 'https://www.seoulrise.or.kr', primary: false },
+    ]
+  },
+  {
+    id: 21,
+    title: '글로컬대학30',
+    sub: '지역대학 5년간 1,000억 지원 + 규제 특례 — AI 인재양성 중심축',
+    dept: 'moe',
+    isNew: false,
+    target: 'univ',
+    scale: '5년간 1,000억 / 교 (30개교 최종 완료)',
+    barVal: 200,
+    detail: '2023~2025년 3년 선정 완료(30개교). 2025년 최종 선정: 조선대-조선간호대·충남대-공주대(통합형), 경성대·순천향대·전남대·제주대·한서대(단독형). 서울대를 제외한 9개 지방거점국립대 전원 포함. 교육부-지자체-대학 협약, AI 인재양성을 핵심 혁신 방향으로 채택. 특성화지방대학 지정 + 범부처 지원 연계. 2026년 추가 선정 없음(계획 변경).',
+    badges: ['moe','region','univ'],
+    links: [
+      { label: '교육부 글로컬대학30', url: 'https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=99449&lev=0&m=0204', primary: true },
+      { label: '나무위키 선정현황', url: 'https://namu.wiki/w/%EA%B8%80%EB%A1%9C%EC%BB%AC%EB%8C%80%ED%95%99%2030', primary: false },
+    ]
+  },
+  {
+    id: 22,
+    title: '첨단분야 혁신융합대학 (COSS)',
+    sub: '대학 간 장벽을 허물고 AI·반도체 등 8개 첨단분야 컨소시엄 교육',
+    dept: 'moe',
+    isNew: false,
+    target: 'univ',
+    scale: '연간 총 816억 (컨소시엄당 연 102억)',
+    barVal: 102,
+    detail: '2021~2026년 6년 사업(마지막 해). 8개 분야: 인공지능·빅데이터·차세대반도체·미래자동차·바이오헬스·실감미디어·지능형로봇·에너지신산업. 18개 연합체(주관대학+참여대학 4~7개). 수도권·지방 각 40% 이상 포함 필수. 마이크로디그리 운영. 46개교 선정, 전공 관계없이 수강 가능. 2024년 지자체참여형 5개 추가(지자체+대학 연합). 2026년 사업 종료 예정으로 후속 사업 설계 논의 중.',
+    badges: ['moe','region','univ'],
+    links: [
+      { label: 'COSS 공식홈페이지', url: 'https://www.cossnet.com', primary: true },
+      { label: '교육부 사업 안내', url: 'https://www.moe.go.kr', primary: false },
+    ]
+  },
+  {
+    id: 23,
+    title: 'LINC 3.0 (산학연협력 선도대학)',
+    sub: '대학-기업-연구소 협력 기반 AI·첨단 인재양성 및 기술이전',
+    dept: 'moe',
+    isNew: false,
+    target: 'univ',
+    scale: '기술혁신선도형 연 55억 / 수요맞춤형 연 40억',
+    barVal: 55,
+    detail: '2022년부터 5년간 운영(~2026년). 일반대 75개교·전문대 59개교, 연 총 4,070억 지원(2022년 기준). 유형: 기술혁신선도형(연 55억, 15개교)·수요맞춤성장형(연 40억, 53개교)·협력기반구축형(10개교). 2025년부터 RISE 체계와 연계해 지역 AI 산학협력 모델로 진화. ICC(특화산업 기업협업센터) 기반 AI 분야 산학공동 기술개발 포함.',
+    badges: ['moe','region','univ'],
+    links: [
+      { label: 'LINC 3.0 한국연구재단', url: 'https://lincthree.nrf.re.kr/page/3f9e37c9-bcb3-4988-82f4-48c8489504e6', primary: true },
+      { label: '교육부 보도자료', url: 'https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=90756&lev=0&searchType=null&statusYN=W&page=1&s=moe&m=020402&opType=N', primary: false },
+    ]
+  },
 ];
 
 const BADGE_META = {
-  msit: { cls: 'badge-msit', label: '과기정통부' },
-  moe:  { cls: 'badge-moe',  label: '교육부' },
-  moel: { cls: 'badge-moel', label: '고용노동부' },
-  new:  { cls: 'badge-new',  label: '★ 2026 신규' },
-  grad: { cls: 'badge-grad', label: '대학원' },
-  univ: { cls: 'badge-univ', label: '일반대학' },
+  msit:   { cls: 'badge-msit',   label: '과기정통부' },
+  moe:    { cls: 'badge-moe',    label: '교육부' },
+  moel:   { cls: 'badge-moel',   label: '고용노동부' },
+  new:    { cls: 'badge-new',    label: '★ 2026 신규' },
+  grad:   { cls: 'badge-grad',   label: '대학원' },
+  univ:   { cls: 'badge-univ',   label: '일반대학' },
   junior: { cls: 'badge-junior', label: '전문대학' },
+  region: { cls: 'badge-region', label: '지역연계' },
 };
 
 let currentFilter = 'all';
@@ -851,6 +922,7 @@ function renderCards(filter) {
         if (filter === 'univ') return p.target === 'univ';
         if (filter === 'junior') return p.target === 'junior';
         if (filter === 'grad') return p.target === 'grad';
+        if (filter === 'region') return p.badges.includes('region');
         return true;
       });
 
@@ -931,8 +1003,12 @@ function renderChart() {
     { label: 'AI기본교육과정', val: 3, color: '#00C48C' },
     { label: 'KDT AI캠퍼스 (기관당)', val: 26, color: '#BE123C' },
     { label: 'AI 특화 공동훈련센터', val: 5, color: '#FB7185' },
+    { label: 'RISE (서울, 대학당 연)', val: 39, color: '#7C3AED' },
+    { label: 'LINC 3.0 기술혁신선도형', val: 55, color: '#A78BFA' },
+    { label: 'COSS (컨소시엄당)', val: 102, color: '#C4B5FD' },
+    { label: '글로컬대학30 (5년 총액)', val: 200, color: '#DDD6FE' },
   ];
-  const max = 30;
+  const max = 200;
   const el = document.getElementById('barChart');
   el.innerHTML = items.map(it => `
     <div class="bar-row">
